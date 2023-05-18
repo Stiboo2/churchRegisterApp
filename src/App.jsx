@@ -19,7 +19,6 @@ function App() {
     <main>
       <Navbar />
       <MyComponent></MyComponent>
-      <CartContainer />
     </main>
   );
 }
