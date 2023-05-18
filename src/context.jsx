@@ -1,6 +1,7 @@
 import { useContext, useReducer, useEffect, createContext } from "react";
 import reducer from "./reducer";
 import cartItems from "./data";
+import capetownBranch from "./churchDa";
 import {
   CLEAR_CART,
   REMOVE,
@@ -16,11 +17,13 @@ const AppContext = createContext();
 const initialState = {
   loading: false,
   cart: new Map(cartItems.map((item) => [item.id, item])),
+  branchs: new Map(capetownBranch.map((branch) => [branch._id, branch])),
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { totalAmount, totalCost } = getTotals(state.cart);
+  //const { totalAmount, totalCost } = getTotals(state.branchs);
 
   const clearCart = () => {
     dispatch({ type: CLEAR_CART });
@@ -29,13 +32,20 @@ export const AppProvider = ({ children }) => {
   const remove = (id) => {
     dispatch({ type: REMOVE, payload: { id } });
   };
-  const increase = (id) => {
-    dispatch({ type: INCREASE, payload: { id } });
-  };
-  const decrease = (id) => {
-    dispatch({ type: DECREASE, payload: { id } });
+
+  const increase = (id, attendanceRecord) => {
+    dispatch({ type: INCREASE, payload: { id, attendanceRecord } });
   };
 
+  const decrease = (id, attendanceRecord) => {
+    dispatch({ type: DECREASE, payload: { id, attendanceRecord } });
+  };
+
+  // Function to update attendance record
+  const updateAttendanceRecord = (newRecord) => {
+    dispatch({ type: "UPDATE_ATTENDANCE_RECORD", payload: newRecord });
+  };
+  console.log(state);
   return (
     <AppContext.Provider
       value={{
@@ -44,6 +54,7 @@ export const AppProvider = ({ children }) => {
         remove,
         increase,
         decrease,
+        updateAttendanceRecord,
         totalAmount,
         totalCost,
       }}

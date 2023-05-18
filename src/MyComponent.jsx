@@ -7,11 +7,12 @@ const MyComponent = () => {
   const [attendanceRecord, setAttendanceRecord] = useState({
     date: "2023-05-14",
     church_branch_id: "branch1",
+    pastor_id: "pastor2",
   });
   const [submitted, setSubmitted] = useState(false); // State variable for submission status
 
-  const handleAttendanceChange = (date, churchBranchId) => {
-    setAttendanceRecord({ date, church_branch_id: churchBranchId });
+  const handleAttendanceChange = (date, churchBranchId, pastor_id) => {
+    setAttendanceRecord({ date, church_branch_id: churchBranchId, pastor_id });
     setSubmitted(true); // Set submitted to true when the form is submitted
   };
 
@@ -25,8 +26,10 @@ const MyComponent = () => {
           <InitSetUp
             date={attendanceRecord.date}
             church_branch_id={attendanceRecord.church_branch_id}
+            pastor_id={attendanceRecord.pastor_id}
           />
-          <CartContainer />
+          <CartContainer attendanceRecord={attendanceRecord} />{" "}
+          {/* Pass attendanceRecord to CartContainer */}
         </>
       )}
     </div>
