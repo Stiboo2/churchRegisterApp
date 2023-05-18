@@ -28,7 +28,7 @@ const CartContainer = () => {
         {cartArray.map((cartItem) => {
           const [id, item] = cartItem;
           {
-            /* cart items */
+            /* cart items  filtering*/
           }
           if (item.checked === true) {
             return;
