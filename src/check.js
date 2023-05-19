@@ -1,37 +1,48 @@
 import React, { useState } from "react";
-import AttendanceSetup from "./AttendanceSetup";
-import CartContainer from "./CartContainer";
-import InitSetUp from "./InitSetUp";
 
 const MyComponent = () => {
-  const [attendanceRecord, setAttendanceRecord] = useState({
-    date: "2023-05-14",
-    church_branch_id: "branch1",
-  });
-  const [submitted, setSubmitted] = useState(false); // State variable for submission status
+  const [showMessageBar, setShowMessageBar] = useState(false);
+  const [apologySMS, setApologySMS] = useState("");
 
-  const handleAttendanceChange = (date, churchBranchId) => {
-    setAttendanceRecord({ date, church_branch_id: churchBranchId });
-    setSubmitted(true); // Set submitted to true when the form is submitted
+  const decreaseHandler = (id, attendance) => {
+    if (apologySMS !== "") {
+      decrease(id, attendance, apologySMS);
+      // Reset the input field and hide the message bar
+      setApologySMS("");
+      setShowMessageBar(false);
+    } else {
+      // Show the message bar if the input field is empty
+      setShowMessageBar(true);
+    }
   };
 
   return (
     <div>
-      {!submitted && ( // Only render the AttendanceSetup component if not submitted
-        <AttendanceSetup onAttendanceChange={handleAttendanceChange} />
-      )}
-      {submitted && ( // Render the InitSetUp component after form submission
-        <>
-          <InitSetUp
-            date={attendanceRecord.date}
-            church_branch_id={attendanceRecord.church_branch_id}
+      {showMessageBar && (
+        <div>
+          Please provide an apology message:
+          <input
+            type="text"
+            value={apologySMS}
+            onChange={(e) => setApologySMS(e.target.value)}
           />
-          <CartContainer attendanceRecord={attendanceRecord} />{" "}
-          {/* Pass attendanceRecord to CartContainer */}
-        </>
+        </div>
       )}
+      <button onClick={() => decreaseHandler(id, attendance)}>Decrease</button>
     </div>
   );
 };
+const decreaseHandler = () => {
+  const apologySMS = window.prompt("Please enter the apology SMS:");
 
-export default MyComponent;
+  if (apologySMS !== null && apologySMS.trim() !== "") {
+    const updatedAttendance = attendance.map((item) => {
+      return {
+        ...item,
+        apologySMS: apologySMS,
+      };
+    });
+
+    decrease(id, updatedAttendance);
+  }
+};
