@@ -64,7 +64,7 @@ const reducer = (state, action) => {
 
     const newItem = {
       ...item,
-      amount: item.amount - 1,
+
       checked: true,
       absent: [...item.absent, action.payload.attendanceRecord], // Update attendance record
     };
