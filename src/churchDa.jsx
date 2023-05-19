@@ -7,7 +7,7 @@ const capetownBranch = [
       {
         date: "2023-05-07", // Sunday 1
         pastor_id: "pastor1",
-        total_attended: 50,
+        total_attended: 0,
         total_absent: 20,
       },
       {

@@ -27,19 +27,11 @@ const CartContainer = ({ attendanceRecord }) => {
       <div>
         {cartArray.map((cartItem) => {
           const [id, item] = cartItem;
-          {
-            /* cart items  filtering*/
-          }
+          // ...
           if (item.checked === true) {
-            return;
+            return null; // Skip rendering the CartItem component
           }
-          return (
-            <CartItem
-              key={id}
-              {...item}
-              attendance={attendanceRecord} // Pass attendanceRecord as a prop
-            />
-          );
+          return <CartItem key={id} {...item} attendance={attendanceRecord} />;
         })}
       </div>
       {/* cart footer */}

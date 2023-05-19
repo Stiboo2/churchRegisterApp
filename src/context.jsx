@@ -9,6 +9,7 @@ import {
   DECREASE,
   LOADING,
   DISPLAY_ITEMS,
+  NEW_BRANCH_DATE,
 } from "./actions";
 import { getTotals } from "./utils";
 
@@ -45,6 +46,11 @@ export const AppProvider = ({ children }) => {
   const updateAttendanceRecord = (newRecord) => {
     dispatch({ type: "UPDATE_ATTENDANCE_RECORD", payload: newRecord });
   };
+
+  const insetData = (attendanceRecord) => {
+    dispatch({ type: NEW_BRANCH_DATE, payload: { attendanceRecord } });
+  };
+
   console.log(state);
   return (
     <AppContext.Provider
@@ -57,6 +63,7 @@ export const AppProvider = ({ children }) => {
         updateAttendanceRecord,
         totalAmount,
         totalCost,
+        insetData,
       }}
     >
       {children}
