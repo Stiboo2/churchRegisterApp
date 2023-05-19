@@ -49,11 +49,8 @@ const reducer = (state, action) => {
         }),
       };
       newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
-      //return { ...state, cart: newCart, branchs: newBranchs };
     }
 
-    // newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
-    //newCart.set(itemId, newItem);
     return { ...state, cart: newCart, branchs: newBranchs };
   }
   if (action.type === DECREASE) {
@@ -80,21 +77,31 @@ const reducer = (state, action) => {
     const newBranchs = new Map(state.branchs);
     const branchId = action.payload.attendanceRecord.church_branch_id;
     const branch = newBranchs.get(branchId);
+
     if (branch) {
-      const newBranch = {
-        ...branch,
-        attendance: [
-          ...branch.attendance,
-          {
-            total_attended: 0,
-            date: action.payload.attendanceRecord.date,
-            pastor_id: action.payload.attendanceRecord.pastor_id,
-          },
-        ],
-      };
-      newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
-      return { ...state, branchs: newBranchs };
+      // Check if an attendance record with the same date already exists
+      const existingRecord = branch.attendance.find(
+        (record) => record.date === action.payload.attendanceRecord.date
+      );
+
+      if (!existingRecord) {
+        const newBranch = {
+          ...branch,
+          attendance: [
+            ...branch.attendance,
+            {
+              id: action.payload.attendanceRecord.date,
+              date: action.payload.attendanceRecord.date,
+              pastor_id: action.payload.attendanceRecord.pastor_id,
+              total_attended: 0,
+            },
+          ],
+        };
+        newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+      }
     }
+
+    return { ...state, branchs: newBranchs };
   }
 
   throw new Error(`no matching action type: ${action.type}`);
