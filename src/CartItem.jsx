@@ -9,8 +9,18 @@ const CartItem = ({ id, img, title, price, amount, attendance }) => {
   };
 
   const decreaseHandler = () => {
-    decrease(id, attendance);
+    const apologySMS = window.prompt("Please enter the apology SMS:");
+
+    if (apologySMS !== null && apologySMS.trim() !== "") {
+      const updatedAttendance = {
+        ...attendance,
+        apologySMS: apologySMS,
+      };
+
+      decrease(id, updatedAttendance);
+    }
   };
+
   useEffect(() => {
     console.log("NEW_BRANCH_DATE");
     insetData(attendance);

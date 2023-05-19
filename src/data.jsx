@@ -13,6 +13,14 @@ const cartItems = [
         pastor_id: "pastor3",
       },
     ],
+    absent: [
+      {
+        date: "2023-05-21",
+        church_branch_id: "branch1",
+        pastor_id: "pastor1",
+        apology: "at work",
+      },
+    ],
   },
   {
     id: "recB6qcHPxb62YJ75",
@@ -22,6 +30,7 @@ const cartItems = [
     amount: 0,
     checked: false,
     attendance: [],
+    absent: [],
   },
   {
     id: "recdRxBsE14Rr2VuJ",
@@ -31,6 +40,7 @@ const cartItems = [
     amount: 0,
     checked: false,
     attendance: [],
+    absent: [],
   },
   {
     id: "recwTo160XST3PIoW",
@@ -40,6 +50,7 @@ const cartItems = [
     amount: 0,
     checked: false,
     attendance: [],
+    absent: [],
   },
 ];
 

@@ -57,14 +57,38 @@ const reducer = (state, action) => {
     const newCart = new Map(state.cart);
     const itemId = action.payload.id;
     const item = newCart.get(itemId);
+
+    const newBranchs = new Map(state.branchs);
+    const branchId = action.payload.attendanceRecord.church_branch_id;
+    const branch = newBranchs.get(branchId);
+
     const newItem = {
       ...item,
       amount: item.amount - 1,
       checked: true,
-      attendance: [...item.attendance, action.payload.attendanceRecord], // Update attendance record
+      absent: [...item.absent, action.payload.attendanceRecord], // Update attendance record
     };
     newCart.set(itemId, newItem);
-    return { ...state, cart: newCart };
+
+    if (branch) {
+      const newBranch = {
+        ...branch,
+        attendance: branch.attendance.map((attendance) => {
+          if (attendance.date === action.payload.attendanceRecord.date) {
+            return {
+              ...attendance,
+              total_absent: attendance.total_absent
+                ? attendance.total_absent + 1
+                : 1,
+            };
+          }
+          return attendance;
+        }),
+      };
+      newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+    }
+
+    return { ...state, cart: newCart, branchs: newBranchs };
   }
   if (action.type === LOADING) {
     return { ...state, loading: true };
