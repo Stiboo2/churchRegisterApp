@@ -107,13 +107,19 @@ const reducer = (state, action) => {
     const branchId = action.payload.attendanceRecord.church_branch_id;
     const branch = newBranchs.get(branchId);
 
+    let isFirstTime = false;
     if (branch) {
-      // Check if an attendance record with the same date already exists
-      const existingRecord = branch.attendance.find(
-        (record) => record.date === action.payload.attendanceRecord.date
-      );
+      const date = action.payload.attendanceRecord.date;
 
-      if (!existingRecord) {
+      branch.attendance.forEach((record) => {
+        if (record.date === date) {
+          isFirstTime = true;
+          return;
+        }
+        return;
+      });
+
+      if (!isFirstTime) {
         const newBranch = {
           ...branch,
           attendance: [
@@ -123,17 +129,16 @@ const reducer = (state, action) => {
               date: action.payload.attendanceRecord.date,
               pastor_id: action.payload.attendanceRecord.pastor_id,
               total_attended: 0,
+              total_absent: 0,
             },
           ],
         };
-        newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+
+        newBranchs.set(branchId, newBranch);
       }
+      return { ...state, branchs: newBranchs };
     }
-
-    return { ...state, branchs: newBranchs };
   }
-
   throw new Error(`no matching action type: ${action.type}`);
 };
-
 export default reducer;

@@ -28,6 +28,9 @@ export const getTotals = (cart, banch_date, branchs) => {
   }
 
   totalCost = TotalAbsent_cost;
-
+  console.log("totalAmount");
+  console.log(totalAmount);
+  console.log("totalCost");
+  console.log(totalCost);
   return { totalAmount, totalCost };
 };

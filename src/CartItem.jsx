@@ -12,7 +12,7 @@ const CartItem = ({ id, img, title, price, amount, attendance }) => {
 
   useEffect(() => {
     updateAttendanceRecord(attendance);
-  }, [attendance]);
+  }, []);
 
   const decreaseHandler = () => {
     const apologySMS = window.prompt("Please enter the apology SMS:");
@@ -31,7 +31,7 @@ const CartItem = ({ id, img, title, price, amount, attendance }) => {
     console.log("NEW_BRANCH_DATE");
     insetData(attendance);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [attendance]);
   return (
     <article className="cart-item">
       <img src={img} alt={title} />
