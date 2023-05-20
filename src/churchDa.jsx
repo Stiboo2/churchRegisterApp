@@ -5,28 +5,28 @@ const capetownBranch = [
     location: "City A",
     attendance: [
       {
-        id: "2023-05-07",
+        _id: "2023-05-07",
         date: "2023-05-07", // Sunday 1
         pastor_id: "pastor1",
         total_attended: 0,
         total_absent: 20,
       },
       {
-        id: "2023-05-14",
+        _id: "2023-05-14",
         date: "2023-05-14", // Sunday 2
         pastor_id: "pastor1",
         total_attended: 45,
         total_absent: 25,
       },
       {
-        id: "2023-05-21",
+        _id: "2023-05-21",
         date: "2023-05-21", // Sunday 3
         pastor_id: "pastor2",
         total_attended: 60,
         total_absent: 10,
       },
       {
-        id: "2023-05-28",
+        _id: "2023-05-28",
         date: "2023-05-28", // Sunday 4
         pastor_id: "pastor2",
         total_attended: 55,
@@ -40,28 +40,28 @@ const capetownBranch = [
     location: "City B",
     attendance: [
       {
-        id: "2023-05-07",
+        _id: "2023-05-07",
         date: "2023-05-07", // Sunday 1
         pastor_id: "pastor3",
         total_attended: 40,
         total_absent: 10,
       },
       {
-        id: "2023-05-14",
+        _id: "2023-05-14",
         date: "2023-05-14", // Sunday 2
         pastor_id: "pastor3",
         total_attended: 35,
         total_absent: 15,
       },
       {
-        id: "2023-05-21",
+        _id: "2023-05-21",
         date: "2023-05-21", // Sunday 3
         pastor_id: "pastor4",
         total_attended: 55,
         total_absent: 5,
       },
       {
-        id: "2023-05-28",
+        _id: "2023-05-28",
         date: "2023-05-28", // Sunday 4
         pastor_id: "pastor4",
         total_attended: 50,
@@ -75,28 +75,28 @@ const capetownBranch = [
     location: "City C",
     attendance: [
       {
-        id: "2023-05-07",
+        _id: "2023-05-07",
         date: "2023-05-07", // Sunday 1
         pastor_id: "pastor5",
         total_attended: 60,
         total_absent: 15,
       },
       {
-        id: "2023-05-14",
+        _id: "2023-05-14",
         date: "2023-05-14", // Sunday 2
         pastor_id: "pastor5",
         total_attended: 55,
         total_absent: 20,
       },
       {
-        id: "2023-05-21",
+        _id: "2023-05-21",
         date: "2023-05-21", // Sunday 3
         pastor_id: "pastor6",
         total_attended: 70,
         total_absent: 5,
       },
       {
-        id: "2023-05-28",
+        _id: "2023-05-28",
         date: "2023-05-28", // Sunday 4
         pastor_id: "pastor6",
         total_attended: 65,
@@ -110,28 +110,28 @@ const capetownBranch = [
     location: "City D",
     attendance: [
       {
-        id: "2023-05-07",
+        _id: "2023-05-07",
         date: "2023-05-07", // Sunday 1
         pastor_id: "pastor7",
         total_attended: 30,
         total_absent: 10,
       },
       {
-        id: "2023-05-14",
+        _id: "2023-05-14",
         date: "2023-05-14", // Sunday 2
         pastor_id: "pastor7",
         total_attended: 25,
         total_absent: 15,
       },
       {
-        id: "2023-05-21",
+        _id: "2023-05-21",
         date: "2023-05-21", // Sunday 3
         pastor_id: "pastor8",
         total_attended: 40,
         total_absent: 5,
       },
       {
-        id: "2023-05-28",
+        _id: "2023-05-28",
         date: "2023-05-28", // Sunday 4
         pastor_id: "pastor8",
         total_attended: 35,

@@ -26,7 +26,11 @@ const initialState = {
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { totalAmount, totalCost } = getTotals(state.cart);
+  const { totalAmount, totalCost } = getTotals(
+    state.cart,
+    state.branch_Date,
+    state.branchs
+  );
   const login = state.logging;
   //const { totalAmount, totalCost } = getTotals(state.branchs);
 

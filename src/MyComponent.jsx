@@ -21,7 +21,7 @@ const MyComponent = () => {
       {!submitted && ( // Only render the AttendanceSetup component if not submitted
         <AttendanceSetup onAttendanceChange={handleAttendanceChange} />
       )}
-      {submitted && ( // Render the InitSetUp component after form submission
+      {true && ( // Render the InitSetUp component after form submission
         <>
           <InitSetUp
             date={attendanceRecord.date}

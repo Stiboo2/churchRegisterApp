@@ -2,10 +2,8 @@ import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
 import cartItems from "./data";
 const CartContainer = ({ attendanceRecord }) => {
-  const { cart, clearCart, totalCost, totalAmount, login, branch_Date } =
-    useGlobalContext();
-  console.log("branch_Date");
-  console.log(branch_Date);
+  const { cart, clearCart, totalCost, totalAmount, login } = useGlobalContext();
+
   const cartArray = Array.from(cart.entries());
   if (login === false) {
     <h2>not login yet</h2>;
@@ -44,13 +42,17 @@ const CartContainer = ({ attendanceRecord }) => {
         <hr />
         <div>
           <h5 className="cart-total">
+            {console.log("tota_________________Amount")}{" "}
+            {console.log(totalCost)}
             total Attendence <span>{totalAmount}</span>
           </h5>
         </div>
         <hr />
         <div>
           <h5 className="cart-total">
-            total Absence<span>{totalCost}</span>
+            {console.log("tota_________________lCost")} {console.log(totalCost)}
+            total Absence
+            <span>{totalCost}</span>
           </h5>
         </div>
         <button className="btn btn-hipster" onClick={clearCart}>
