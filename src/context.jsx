@@ -48,7 +48,7 @@ export const AppProvider = ({ children }) => {
 
   // Function to update attendance record
   const updateAttendanceRecord = (branch_Date) => {
-    dispatch({ type: UPDATE_ATTENDANCE_RECORD, payload: branch_Date });
+    dispatch({ type: UPDATE_ATTENDANCE_RECORD, payload: { branch_Date } });
   };
 
   const insetData = (attendanceRecord) => {

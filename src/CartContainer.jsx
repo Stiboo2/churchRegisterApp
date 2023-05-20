@@ -2,8 +2,10 @@ import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
 import cartItems from "./data";
 const CartContainer = ({ attendanceRecord }) => {
-  const { cart, clearCart, totalCost, totalAmount, login } = useGlobalContext();
-
+  const { cart, clearCart, totalCost, totalAmount, login, branch_Date } =
+    useGlobalContext();
+  console.log("branch_Date");
+  console.log(branch_Date);
   const cartArray = Array.from(cart.entries());
   if (login === false) {
     <h2>not login yet</h2>;
