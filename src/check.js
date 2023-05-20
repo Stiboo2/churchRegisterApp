@@ -205,3 +205,62 @@ console.log(attendanceRecord);
       return { ...state, branchs: newBranchs };
     }
   }
+
+  if (action.type === NEW_BRANCH_DATE) {
+  const newBranchs = new Map(state.branchs);
+  const branchId = action.payload.attendanceRecord.church_branch_id;
+  const branch = newBranchs.get(branchId);
+  
+  if (branch) {
+    // Check if an attendance record with the same date already exists
+    const existingRecord = branch.attendance.find(record => record.date === action.payload.attendanceRecord.date);
+    
+    if (!existingRecord) {
+      const newBranch = {
+        ...branch,
+        attendance: [
+          ...branch.attendance,
+          {
+            id: action.payload.attendanceRecord.date,
+            date: action.payload.attendanceRecord.date,
+            pastor_id: action.payload.attendanceRecord.pastor_id,
+            total_attended: 0,
+          },
+        ],
+      };
+      newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+    }
+  }
+  
+  return { ...state, branchs: newBranchs };
+}
+
+
+
+
+
+
+{
+  const newBranchs = new Map(state.branchs);
+  const branchId = action.payload.attendanceRecord.church_branch_id;
+  const branch = newBranchs.get(branchId);
+  console.log("console.log(branch);");
+  console.log(branch);
+  let isFirstTime = false;
+  h = {
+        ...branch,
+        attendance: [
+          ...branch.attendance,
+          {
+            id: action.payload.attendanceRecord.date,
+            date: action.payload.attendanceRecord.date,
+            pastor_id: action.payload.attendanceRecord.pastor_id,
+            total_attended: 0,
+            total_absent: 0,
+          },
+        ],
+      };
+      // Rest of your code
+    }
+  }
+}
