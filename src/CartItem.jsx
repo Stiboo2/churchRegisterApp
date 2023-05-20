@@ -7,7 +7,7 @@ const CartItem = ({ id, img, title, price, amount, attendance }) => {
     useGlobalContext();
 
   const increaseHandler = () => {
-    increase(id);
+    increase(id, attendance);
   };
 
   useEffect(() => {

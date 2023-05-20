@@ -21,7 +21,7 @@ const initialState = {
   loading: false,
   cart: new Map(cartItems.map((item) => [item.id, item])),
   branchs: new Map(capetownBranch.map((branch) => [branch._id, branch])),
-  branch_Date: new Object(),
+  branch_Date: {},
 };
 
 export const AppProvider = ({ children }) => {
