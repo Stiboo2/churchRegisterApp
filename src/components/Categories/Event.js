@@ -1,11 +1,9 @@
 import React from "react";
 import "./Socials.css";
-const Event = ({ items }) => {
+const Event = () => {
   return (
     <div className="section-center_sc">
       {items.map((eventItem) => {
-        const { id, title, image, desc, date } = eventItem;
-
         return (
           <article key={id} className="menu_sc-item">
             <img src={image} alt={title} className="photo_sc" />
