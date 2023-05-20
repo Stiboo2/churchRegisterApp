@@ -2,35 +2,33 @@ export const getTotals = (cart, banch_date, branchs) => {
   let totalAmount = 0;
   let totalCost = 0;
 
-  for (let { amount } of cart.values()) {
-    totalAmount += amount;
-  }
-
   const newBranchs = new Map(branchs);
   const branchId = banch_date.church_branch_id;
   const branch = newBranchs.get(branchId);
   const date = banch_date.date;
 
-  let TotalAbsent_cost = null;
+  let TotalAttend_amount = 0;
+  let Day_attendance_cost = 0;
   if (branch) {
-    let totalAbsent = null;
+    let Day_attendance = null;
 
     // Find the attendance record for the specified date
     branch.attendance.forEach((record) => {
       if (record.date === date) {
-        totalAbsent = record;
+        Day_attendance = record;
       }
     });
 
-    if (totalAbsent) {
-      TotalAbsent_cost = totalAbsent.total_absent;
+    if (Day_attendance) {
+      Day_attendance_cost = Day_attendance.total_absent;
+      TotalAttend_amount = Day_attendance.total_attended;
     }
   }
-
-  totalCost = TotalAbsent_cost;
+  totalAmount = TotalAttend_amount;
+  totalCost = Day_attendance_cost;
   console.log("totalAmount");
   console.log(totalAmount);
-  console.log("totalCost");
+  console.log("totalAmount");
   console.log(totalCost);
   return { totalAmount, totalCost };
 };
