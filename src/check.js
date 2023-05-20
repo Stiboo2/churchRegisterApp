@@ -155,3 +155,53 @@ console.log(attendanceRecord);
     const totalAttended = attendanceRecord.total_attended;
     
   }
+
+
+
+
+
+
+    if (action.type === NEW_BRANCH_DATE) {
+    const newBranchs = new Map(state.branchs);
+    const branchId = action.payload.attendanceRecord.church_branch_id;
+    const branch = newBranchs.get(branchId);
+    if (branch) {
+      const newBranch = {
+        ...branch,
+        attendance: [
+          ...branch.attendance,
+          {
+            total_attended: 0,
+            date: action.payload.attendanceRecord.date,
+            pastor_id: action.payload.attendanceRecord.pastor_id,
+          },
+        ],
+      };
+            newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+      return { ...state, branchs: newBranchs };
+    }
+  }
+          console.log("existingRecord________________");
+        console.log(existingRecord);
+
+  if (action.type === NEW_BRANCH_DATE) {
+    const newBranchs = new Map(state.branchs);
+    const branchId = action.payload.attendanceRecord.church_branch_id;
+    const branch = newBranchs.get(branchId);
+    if (branch) {
+      const newBranch = {
+        ...branch,
+        attendance: [
+          ...branch.attendance,
+          {
+            id: action.payload.attendanceRecord.date,
+            date: action.payload.attendanceRecord.date,
+            pastor_id: action.payload.attendanceRecord.pastor_id,
+            total_attended: 0,
+          },
+        ],
+           };
+      newBranchs.set(branchId, newBranch); // Update the branch in the branchs Map
+      return { ...state, branchs: newBranchs };
+    }
+  }
