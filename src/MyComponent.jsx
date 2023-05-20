@@ -28,7 +28,7 @@ const MyComponent = () => {
             church_branch_id={attendanceRecord.church_branch_id}
             pastor_id={attendanceRecord.pastor_id}
           />
-          <CartContainer attendanceRecord={attendanceRecord} />{" "}
+          <CartContainer attendanceRecord={attendanceRecord} />
           {/* Pass attendanceRecord to CartContainer */}
         </>
       )}

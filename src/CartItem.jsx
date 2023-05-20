@@ -1,12 +1,18 @@
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 import { useEffect } from "react";
+
 const CartItem = ({ id, img, title, price, amount, attendance }) => {
-  const { remove, increase, decrease, insetData } = useGlobalContext();
+  const { remove, increase, decrease, insetData, updateAttendanceRecord } =
+    useGlobalContext();
 
   const increaseHandler = () => {
-    increase(id, attendance);
+    increase(id);
   };
+
+  useEffect(() => {
+    updateAttendanceRecord(attendance);
+  }, [attendance]);
 
   const decreaseHandler = () => {
     const apologySMS = window.prompt("Please enter the apology SMS:");

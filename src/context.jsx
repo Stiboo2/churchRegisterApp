@@ -10,20 +10,24 @@ import {
   LOADING,
   DISPLAY_ITEMS,
   NEW_BRANCH_DATE,
+  UPDATE_ATTENDANCE_RECORD,
 } from "./actions";
 import { getTotals } from "./utils";
 
 const AppContext = createContext();
 
 const initialState = {
+  logging: false,
   loading: false,
   cart: new Map(cartItems.map((item) => [item.id, item])),
   branchs: new Map(capetownBranch.map((branch) => [branch._id, branch])),
+  branch_Date: new Object(),
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { totalAmount, totalCost } = getTotals(state.cart);
+  const login = state.logging;
   //const { totalAmount, totalCost } = getTotals(state.branchs);
 
   const clearCart = () => {
@@ -43,8 +47,8 @@ export const AppProvider = ({ children }) => {
   };
 
   // Function to update attendance record
-  const updateAttendanceRecord = (newRecord) => {
-    dispatch({ type: "UPDATE_ATTENDANCE_RECORD", payload: newRecord });
+  const updateAttendanceRecord = (branch_Date) => {
+    dispatch({ type: UPDATE_ATTENDANCE_RECORD, payload: branch_Date });
   };
 
   const insetData = (attendanceRecord) => {
@@ -64,6 +68,7 @@ export const AppProvider = ({ children }) => {
         totalAmount,
         totalCost,
         insetData,
+        login,
       }}
     >
       {children}

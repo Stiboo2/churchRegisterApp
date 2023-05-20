@@ -6,6 +6,7 @@ import {
   LOADING,
   DISPLAY_ITEMS,
   NEW_BRANCH_DATE,
+  UPDATE_ATTENDANCE_RECORD,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -92,6 +93,10 @@ const reducer = (state, action) => {
   }
   if (action.type === LOADING) {
     return { ...state, loading: true };
+  }
+  if (action.type === UPDATE_ATTENDANCE_RECORD) {
+    const newBranch_Date = action.payload.branch_Date;
+    return { ...state, logging: false, branch_Date: newBranch_Date };
   }
   if (action.type === DISPLAY_ITEMS) {
     const newCart = new Map(action.payload.cart.map((item) => [item.id, item]));

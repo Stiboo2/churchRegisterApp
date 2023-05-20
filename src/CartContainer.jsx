@@ -2,20 +2,23 @@ import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
 import cartItems from "./data";
 const CartContainer = ({ attendanceRecord }) => {
-  const { cart, clearCart, totalCost, totalAmount } = useGlobalContext();
+  const { cart, clearCart, totalCost, totalAmount, login } = useGlobalContext();
 
   const cartArray = Array.from(cart.entries());
+  if (login === false) {
+    <h2>not login yet</h2>;
 
-  if (cartArray.length === 0) {
-    return (
-      <section className="cart">
-        {/* cart header */}
-        <header>
-          <h2>your bag</h2>
-          <h4 className="empty-cart">is currently empty</h4>
-        </header>
-      </section>
-    );
+    if (cartArray.length === 0) {
+      return (
+        <section className="cart">
+          {/* cart header */}
+          <header>
+            <h2>your bag</h2>
+            <h4 className="empty-cart">is currently empty</h4>
+          </header>
+        </section>
+      );
+    }
   }
   return (
     <section className="cart">
