@@ -112,7 +112,7 @@ const reducer = (state, action) => {
       const date = action.payload.attendanceRecord.date;
 
       branch.attendance.forEach((record) => {
-        if (record.date === date || date == My_Birthday) {
+        if (record.date === date || date === My_Birthday) {
           isFirstTime = true;
           return;
         }

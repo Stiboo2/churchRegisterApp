@@ -1,7 +1,8 @@
 import { useContext, useReducer, useEffect, createContext } from "react";
 import reducer from "./reducer";
-import cartItems from "./data";
+
 import capetownBranch from "./churchDa";
+import memberS from "./components/Data/membersData";
 import {
   CLEAR_CART,
   REMOVE,
@@ -19,7 +20,7 @@ const AppContext = createContext();
 const initialState = {
   logging: false,
   loading: false,
-  cart: new Map(cartItems.map((item) => [item.id, item])),
+  cart: new Map(memberS.map((item) => [item.id, item])),
   branchs: new Map(capetownBranch.map((branch) => [branch._id, branch])),
   branch_Date: {},
 };

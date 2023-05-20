@@ -1,6 +1,5 @@
 import React from "react";
-import "./Socials.css";
-
+//import "../Categories/Socials.css";
 const Title = ({ text }) => {
   return (
     <div className="title">

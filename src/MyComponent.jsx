@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AttendanceSetup from "./AttendanceSetup";
 import CartContainer from "./CartContainer";
+import FilterBar from "./components/Categories/FilterBar";
 import InitSetUp from "./InitSetUp";
 
 const MyComponent = () => {
@@ -9,7 +10,7 @@ const MyComponent = () => {
     church_branch_id: "branch1",
     pastor_id: "pastor2",
   });
-  const [submitted, setSubmitted] = useState(false); // State variable for submission status
+  const [submitted, setSubmitted] = useState(true); // State variable for submission status
 
   const handleAttendanceChange = (date, churchBranchId, pastor_id) => {
     setAttendanceRecord({ date, church_branch_id: churchBranchId, pastor_id });
@@ -23,11 +24,13 @@ const MyComponent = () => {
       )}
       {submitted && ( // Render the InitSetUp component after form submission
         <>
+          <FilterBar />
           <InitSetUp
             date={attendanceRecord.date}
             church_branch_id={attendanceRecord.church_branch_id}
             pastor_id={attendanceRecord.pastor_id}
           />
+
           <CartContainer attendanceRecord={attendanceRecord} />
           {/* Pass attendanceRecord to CartContainer */}
         </>
