@@ -12,7 +12,7 @@ const CartItem = ({ id, img, title, price, amount, attendance }) => {
 
   useEffect(() => {
     updateAttendanceRecord(attendance);
-  }, []);
+  }, [attendance]);
 
   const decreaseHandler = () => {
     const apologySMS = window.prompt("Please enter the apology SMS:");

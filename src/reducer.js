@@ -106,13 +106,13 @@ const reducer = (state, action) => {
     const newBranchs = new Map(state.branchs);
     const branchId = action.payload.attendanceRecord.church_branch_id;
     const branch = newBranchs.get(branchId);
-
+    let My_Birthday = "1985-04-07";
     let isFirstTime = false;
     if (branch) {
       const date = action.payload.attendanceRecord.date;
 
       branch.attendance.forEach((record) => {
-        if (record.date === date) {
+        if (record.date === date || date == My_Birthday) {
           isFirstTime = true;
           return;
         }

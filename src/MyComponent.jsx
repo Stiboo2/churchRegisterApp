@@ -4,7 +4,11 @@ import CartContainer from "./CartContainer";
 import InitSetUp from "./InitSetUp";
 
 const MyComponent = () => {
-  const [attendanceRecord, setAttendanceRecord] = useState({});
+  const [attendanceRecord, setAttendanceRecord] = useState({
+    date: "1985-04-07",
+    church_branch_id: "branch1",
+    pastor_id: "pastor2",
+  });
   const [submitted, setSubmitted] = useState(false); // State variable for submission status
 
   const handleAttendanceChange = (date, churchBranchId, pastor_id) => {
