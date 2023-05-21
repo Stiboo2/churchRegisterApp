@@ -19,11 +19,6 @@ const CartContainer = ({ attendanceRecord, catalog }) => {
   }
   return (
     <section className="cart">
-      {/* cart header */}
-      <header>
-        <h2>your bag</h2>
-      </header>
-      {/* cart items */}
       <div>
         {cartArray.map((cartItem) => {
           const [id, item] = cartItem;

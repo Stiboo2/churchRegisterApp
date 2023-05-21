@@ -27,13 +27,12 @@ const MyComponent = () => {
       )}
       {submitted && ( // Render the InitSetUp component after form submission
         <>
-          <FilterBar onValueChange={handleValueFromChild} />
           <InitSetUp
             date={attendanceRecord.date}
             church_branch_id={attendanceRecord.church_branch_id}
             pastor_id={attendanceRecord.pastor_id}
           />
-
+          <FilterBar onValueChange={handleValueFromChild} />
           <CartContainer
             attendanceRecord={attendanceRecord}
             catalog={valueFromChild}
