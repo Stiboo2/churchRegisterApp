@@ -21,7 +21,7 @@ const Socials = () => {
     setEventItems(newItems);
   };
 
-  const fetchEvents = async () => {
+  const fetchBranches = async () => {
     setLoading(true);
     try {
       const loadedEvents = await getEvents();
@@ -39,7 +39,7 @@ const Socials = () => {
   };
 
   useEffect(() => {
-    fetchEvents();
+    fetchBranches();
   }, []);
 
   if (loading) {

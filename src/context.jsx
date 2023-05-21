@@ -28,7 +28,6 @@ const initialState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { totalAmount, totalCost } = getTotals(
-    state.cart,
     state.branch_Date,
     state.branchs
   );
@@ -60,7 +59,6 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: NEW_BRANCH_DATE, payload: { attendanceRecord } });
   };
 
-  console.log(state);
   return (
     <AppContext.Provider
       value={{

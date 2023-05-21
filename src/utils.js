@@ -1,4 +1,4 @@
-export const getTotals = (cart, banch_date, branchs) => {
+export const getTotals = (banch_date, branchs) => {
   let totalAmount = 0;
   let totalCost = 0;
 
@@ -26,9 +26,6 @@ export const getTotals = (cart, banch_date, branchs) => {
   }
   totalAmount = TotalAttend_amount;
   totalCost = Day_attendance_cost;
-  console.log("totalAmount");
-  console.log(totalAmount);
-  console.log("totalAmount");
-  console.log(totalCost);
+
   return { totalAmount, totalCost };
 };

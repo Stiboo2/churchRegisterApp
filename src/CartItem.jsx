@@ -28,7 +28,6 @@ const CartItem = ({ id, img, title, surname, branch, attendance }) => {
   };
 
   useEffect(() => {
-    console.log("NEW_BRANCH_DATE");
     insetData(attendance);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attendance]);

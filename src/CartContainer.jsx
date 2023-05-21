@@ -6,8 +6,6 @@ const CartContainer = ({ attendanceRecord }) => {
 
   const cartArray = Array.from(cart.entries());
 
-  <h2>not login yet</h2>;
-
   if (cartArray.length === 0) {
     return (
       <section className="cart">
@@ -41,15 +39,12 @@ const CartContainer = ({ attendanceRecord }) => {
         <hr />
         <div>
           <h5 className="cart-total">
-            {console.log("tota_________________Amount")}{" "}
-            {console.log(totalCost)}
             total Attendence <span>{totalAmount}</span>
           </h5>
         </div>
         <hr />
         <div>
           <h5 className="cart-total">
-            {console.log("tota_________________lCost")} {console.log(totalCost)}
             total Absence
             <span>{totalCost}</span>
           </h5>

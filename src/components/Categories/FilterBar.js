@@ -1,19 +1,50 @@
 import React, { useState, useEffect } from "react";
 import Title from "../Title/Title";
-import memberS from "../Data/membersData";
-//import "./Socials.css";
+import { useGlobalContext } from "../../context";
+
 const FilterBar = () => {
-  const [eventItems, setEventItems] = useState([]);
+  const [branchCatelog, setBranchCatelog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
-  const [items, setItems] = useState([]);
-  /*
-  const filterItems = (category) => {
+  const [branchItemss, setbranchItemss] = useState([]);
+  const { cart } = useGlobalContext();
+  const members = Array.from(cart.entries());
+
+  const filterbranchItemss = (category) => {
     if (category === "all") {
-      setEventItems(items);
+      setBranchCatelog(branchItemss);
       return;
     }
-  };*/
+    const newItems = branchItemss.filter((item) => item === category);
+    setBranchCatelog(newItems);
+  };
+
+  let branchSet = new Set();
+  members.map((memberbranchItems) => {
+    const [id, person] = memberbranchItems;
+    branchSet.add(person.branch);
+  });
+
+  const fetchBranches = () => {
+    setCategories(["all", ...branchSet]);
+    setbranchItemss(branchSet);
+  };
+  useEffect(() => {
+    fetchBranches();
+  }, []);
+
+  console.log(branchItemss);
+  if (members.length === 0) {
+    return (
+      <section className="cart">
+        {/* cart header */}
+        <header>
+          <h2>your bag</h2>
+          <h4 className="empty-cart">is currently empty</h4>
+        </header>
+      </section>
+    );
+  }
 
   return (
     <main>
@@ -23,4 +54,5 @@ const FilterBar = () => {
     </main>
   );
 };
+
 export default FilterBar;
