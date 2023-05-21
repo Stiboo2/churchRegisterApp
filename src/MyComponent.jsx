@@ -10,7 +10,7 @@ const MyComponent = () => {
     church_branch_id: "branch1",
     pastor_id: "pastor2",
   });
-  const [submitted, setSubmitted] = useState(true); // State variable for submission status
+  const [submitted, setSubmitted] = useState(false); // State variable for submission status
   const [valueFromChild, setValueFromChild] = useState("all");
   const handleAttendanceChange = (date, churchBranchId, pastor_id) => {
     setAttendanceRecord({ date, church_branch_id: churchBranchId, pastor_id });
