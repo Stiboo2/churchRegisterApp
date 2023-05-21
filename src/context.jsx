@@ -58,7 +58,7 @@ export const AppProvider = ({ children }) => {
   const insetData = (attendanceRecord) => {
     dispatch({ type: NEW_BRANCH_DATE, payload: { attendanceRecord } });
   };
-
+  console.log(state);
   return (
     <AppContext.Provider
       value={{

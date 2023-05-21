@@ -1,7 +1,7 @@
 import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
 import cartItems from "./data";
-const CartContainer = ({ attendanceRecord }) => {
+const CartContainer = ({ attendanceRecord, catalog }) => {
   const { cart, clearCart, totalCost, totalAmount, login } = useGlobalContext();
 
   const cartArray = Array.from(cart.entries());
@@ -28,9 +28,16 @@ const CartContainer = ({ attendanceRecord }) => {
         {cartArray.map((cartItem) => {
           const [id, item] = cartItem;
           // ...
-          if (item.checked === true) {
+
+          const catalogString = Array.from(catalog).join("");
+
+          if (
+            (catalogString !== "all" && item.branch !== catalogString) ||
+            item.checked === true
+          ) {
             return null; // Skip rendering the CartItem component
           }
+
           return <CartItem key={id} {...item} attendance={attendanceRecord} />;
         })}
       </div>

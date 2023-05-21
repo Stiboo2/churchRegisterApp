@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Title from "../Title/Title";
 import { useGlobalContext } from "../../context";
 import Catalog from "./Catalog";
-const FilterBar = () => {
+import "./Filter.css";
+const FilterBar = ({ onValueChange }) => {
   const [branchCatelog, setBranchCatelog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
@@ -20,8 +21,7 @@ const FilterBar = () => {
     );
     const filteredSet = new Set(filteredArray);
     setBranchCatelog(filteredSet);
-    console.log(branchCatelog);
-    console.log(filteredSet);
+    onValueChange(filteredSet);
   };
 
   let branchSet = new Set();

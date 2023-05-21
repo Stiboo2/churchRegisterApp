@@ -11,10 +11,13 @@ const MyComponent = () => {
     pastor_id: "pastor2",
   });
   const [submitted, setSubmitted] = useState(true); // State variable for submission status
-
+  const [valueFromChild, setValueFromChild] = useState("all");
   const handleAttendanceChange = (date, churchBranchId, pastor_id) => {
     setAttendanceRecord({ date, church_branch_id: churchBranchId, pastor_id });
     setSubmitted(true); // Set submitted to true when the form is submitted
+  };
+  const handleValueFromChild = (value) => {
+    setValueFromChild(value);
   };
 
   return (
@@ -24,14 +27,17 @@ const MyComponent = () => {
       )}
       {submitted && ( // Render the InitSetUp component after form submission
         <>
-          <FilterBar />
+          <FilterBar onValueChange={handleValueFromChild} />
           <InitSetUp
             date={attendanceRecord.date}
             church_branch_id={attendanceRecord.church_branch_id}
             pastor_id={attendanceRecord.pastor_id}
           />
 
-          <CartContainer attendanceRecord={attendanceRecord} />
+          <CartContainer
+            attendanceRecord={attendanceRecord}
+            catalog={valueFromChild}
+          />
           {/* Pass attendanceRecord to CartContainer */}
         </>
       )}
