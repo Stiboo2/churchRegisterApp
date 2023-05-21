@@ -7,13 +7,16 @@ const FilterBar = ({ onValueChange }) => {
   const [branchCatelog, setBranchCatelog] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
+  const [categ, setCateg] = useState([]);
   const [branchItemss, setbranchItemss] = useState([]);
   const { cart } = useGlobalContext();
   const members = Array.from(cart.entries());
 
   const filterbranchItemss = (category) => {
+    setCateg(category);
+
     if (category === "all") {
-      setBranchCatelog(branchItemss);
+      onValueChange("all");
       return;
     }
     const filteredArray = Array.from(branchItemss).filter(
@@ -43,7 +46,7 @@ const FilterBar = ({ onValueChange }) => {
       <section className="cart">
         {/* cart header */}
         <header>
-          <h2>your bag</h2>
+          / <h2>your bag</h2>
           <h4 className="empty-cart">is currently empty</h4>
         </header>
       </section>
@@ -52,11 +55,11 @@ const FilterBar = ({ onValueChange }) => {
 
   return (
     <>
-      <Title className="event-title" text="Our Social Event" />
       <Catalog
         categories={categories}
         filterItems={filterbranchItemss}
       ></Catalog>
+      <Title text={categ} />
     </>
   );
 };
