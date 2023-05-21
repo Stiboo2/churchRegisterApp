@@ -5,7 +5,7 @@ const memberS = [
     surname: "Babalo",
     img: "https://res.cloudinary.com/dkayrcyeb/image/upload/v1683824994/WhatsApp_Image_2023-05-11_at_18.47.16_5_kqbsb5.jpg",
     amount: 0,
-    branch: "Dunoon",
+    branch: "Paarl",
     checked: false,
     attendance: [
       {

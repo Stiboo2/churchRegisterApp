@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Title from "../Title/Title";
 import { useGlobalContext } from "../../context";
-
+import Catalog from "./Catalog";
 const FilterBar = () => {
   const [branchCatelog, setBranchCatelog] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,8 +15,13 @@ const FilterBar = () => {
       setBranchCatelog(branchItemss);
       return;
     }
-    const newItems = branchItemss.filter((item) => item === category);
-    setBranchCatelog(newItems);
+    const filteredArray = Array.from(branchItemss).filter(
+      (branch) => branch === category
+    );
+    const filteredSet = new Set(filteredArray);
+    setBranchCatelog(filteredSet);
+    console.log(branchCatelog);
+    console.log(filteredSet);
   };
 
   let branchSet = new Set();
@@ -33,7 +38,6 @@ const FilterBar = () => {
     fetchBranches();
   }, []);
 
-  console.log(branchItemss);
   if (members.length === 0) {
     return (
       <section className="cart">
@@ -47,11 +51,13 @@ const FilterBar = () => {
   }
 
   return (
-    <main>
-      <section className="section_sc menu_sc">
-        <Title className="event-title" text="Our Social Event" />
-      </section>
-    </main>
+    <>
+      <Title className="event-title" text="Our Social Event" />
+      <Catalog
+        categories={categories}
+        filterItems={filterbranchItemss}
+      ></Catalog>
+    </>
   );
 };
 

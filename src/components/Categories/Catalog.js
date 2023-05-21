@@ -1,6 +1,4 @@
-import React from "react";
-const Categories = ({ categories, filterItems }) => {
-  console.log(categories);
+const Catalog = ({ categories, filterItems }) => {
   return (
     <div className="btn-container_sc">
       {categories.map((category, index) => {
@@ -19,4 +17,4 @@ const Categories = ({ categories, filterItems }) => {
   );
 };
 
-export default Categories;
+export default Catalog;
