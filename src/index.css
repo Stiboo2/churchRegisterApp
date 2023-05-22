@@ -281,13 +281,13 @@ nav h4 {
   position: relative;
 }
 .cart-icon {
-  font-size: 2.25rem;
+  font-size: 3.25rem;
   color: var(--white);
 }
 .amount-container {
   position: absolute;
-  top: -0.85rem;
-  right: -0.85rem;
+  top: -1.5rem; /* Adjust the top position as needed */
+  right: -1.5rem; /* Adjust the right position as needed */
   width: 1.75rem;
   height: 1.75rem;
   background: var(--primary-300);
@@ -409,4 +409,13 @@ Cart Item
   font-size: 1.25rem;
   display: block;
   text-align: center;
+}
+.cart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
